@@ -17,9 +17,8 @@ app.use(express.static('./client'))
 
 
 app.post('/sales_report', (req, res) => { 
-    var text = req.body.sometext;
-    console.log(req.body)
-    var par = JSON.parse(text);
+    var input = req.body.text;
+    var par = JSON.parse(input);
     var fields = Object.keys(par);
     // res.send(req.data)
     // var smth = (typeof text)
@@ -28,7 +27,7 @@ app.post('/sales_report', (req, res) => {
     csv = csv.join('\r\n')
     // // fs.writeFile 
     // console.log(req.data);
-    // res.send(JSON.stringify(req.data));
+    // res.send(JSON.stringify(req.body));
     res.send(csv);
     
 });

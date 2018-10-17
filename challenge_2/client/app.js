@@ -10,7 +10,7 @@ $(document).ready(function() {
             contentType: 'application/json',
             data: JSON.stringify({text}),
             success: (data) => {
-                $('body').html('')
+                // $('body').html('')
                 $('body').append(data);
             }})
     })

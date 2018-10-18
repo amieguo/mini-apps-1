@@ -13,8 +13,19 @@ app.use(express.static('./public'));
 
 
 app.post('/form1', (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     db.insertPurchase(req.body.name, req.body.email, req.body.password, (err, data) => {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            res.send(data)
+        }
+    })
+})
+
+app.post('/form2', (req, res) => {
+    console.log(req.body)
+    db.insertPurchase2(req.body.shipping, req.body.creditcard, (err, data) => {
         if (err) {
             res.status(500).send(err);
         } else {

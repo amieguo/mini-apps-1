@@ -24,6 +24,18 @@ var insertPurchase = function(name, email, password, callback) {
     })
 }
 
+var insertPurchase2 = function(shipping, creditcard, callback) {
+    var queryStr = `INSERT INTO purchase (shipaddress, creditcard) VALUES (?, ?)`
+    connection.query(queryStr, [shipping, creditcard], function(error, results) {
+        if (error) {
+            console.log(error)
+        } else {
+            callback(null, results);
+        }
+    })
+}
+
 module.exports.insertPurchase = insertPurchase;
+module.exports.insertPurchase2 = insertPurchase2;
 
 // shipaddress, creditcard, 

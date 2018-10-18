@@ -4,6 +4,7 @@ class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            id: 0,
             homepage: true,
             form1: false,
             form2: false,
@@ -18,10 +19,11 @@ class App extends React.Component {
         })
     }
 
-    handleFormOne() {
+    handleFormOne(dataId) {
         this.setState({
             form2: !this.state.form2,
-            form1: !this.state.form1
+            form1: !this.state.form1,
+            id: dataId
         })
     }
 
@@ -33,7 +35,7 @@ class App extends React.Component {
     }
     
     render() {
-        const form1 = (<FormOne formOnesubmit={this.handleFormOne.bind(this)}/>)
+        const form1 = (<FormOne formOnesubmit={this.handleFormOne.bind(this)} id={this.state.id}/>)
         const form2 = (<FormTwo formTwosubmit={this.handleFormTwo.bind(this)}/>)
 
         const homepage = (
@@ -95,7 +97,10 @@ class FormOne extends React.Component {
                 password: this.state.password
             }),
             success: (data) => {
-                this.props.formOnesubmit()
+                // console.log(this.props.id)
+                // this.props.id = data.insertId;
+                // console.log('insertId:', data.insertId)
+                this.props.formOnesubmit(data.insertId)
             }
         })
     }
@@ -107,7 +112,7 @@ class FormOne extends React.Component {
         <input id="name" type='text' value={this.state.name} onChange={this.handleChange} placeholder='Enter Name'></input>
         <input id="email" type='text' value={this.state.email} onChange={this.handleChange} placeholder='Enter Email'></input>
         <input id="password" type='text' value={this.state.password} onChange={this.handleChange} placeholder='Enter Password'></input>
-        <button type="submit" className="namesubmit">Submit Step</button>
+        <button type="submit" className="namesubmit">Next</button>
         </div>
     </form>
     )
@@ -152,7 +157,7 @@ class FormTwo extends React.Component {
         <div className="name">
         <input id="shipping" type='text' value={this.state.shipping} onChange={this.handleChange} placeholder='Enter Shipping Address'></input>
         <input id="creditcard" type='text' value={this.state.creditcard} onChange={this.handleChange} placeholder='Enter Credit Card'></input>
-        <button type="submit" className="submit">Submit Step</button>
+        <button type="submit" className="submit">Next</button>
         </div>
     </form>
     )

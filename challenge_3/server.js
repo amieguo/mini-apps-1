@@ -10,8 +10,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('./public'));
 
 
-app.post('/test', (req, res) => {
-    res.send(console.log('hi'))
+app.post('/form', (req, res) => {
+    res.send('hi')
 })
 
 

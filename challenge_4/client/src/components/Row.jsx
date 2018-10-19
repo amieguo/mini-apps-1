@@ -6,8 +6,10 @@ var Row = (props) => (
     
     <div>
         
-        {props.row.map((elem, index) => <Square value={elem}y={index} x={props.x} 
-        handleClick={props.handleClick} player1={props.player1}/>)}
+        {props.row.map((elem, index) => <Square value={elem} y={index} x={props.x} 
+        handleClick={props.handleClick} player1={props.player1} 
+        // color={props.color}
+        />)}
         
     </div>
 

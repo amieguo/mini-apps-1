@@ -61,7 +61,7 @@ class App extends React.Component {
     render() {
         var status;
 
-        if (this.state.player1) {
+        if (this.state.currentplayer === this.state.player1) {
             status = "Player 1's Turn";
         } else {
             status = "Player 2's Turn";
